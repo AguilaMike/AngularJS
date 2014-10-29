@@ -1,26 +1,27 @@
 <!DOCTYPE html>
-<html lang="es" ng-app>
+<html lang="es" ng-app="pokedex">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Pokédex</title>
     </head>
     <body>
-        <div>
-            <h1>Bulbasaur # 001</h1>
-            <h2>Seed Pokémon</h2>
-            <img src="img/pokemons/bulbasaur.jpg" />
+        <div ng-controller="PokemonController as pkm">
+            <h1>{{ pkm.pokemon.name }} # {{ pkm.pokemon.id }}</h1>
+            <h2>{{ pkm.pokemon.species }}</h2>
+            <img src="img/pokemons/{{ pkm.pokemon.name | lowercase }}.jpg" />
             <h2>Pokédex</h2>
             <ul>
-                <li><strong>Type:</strong> Grass, Poison</li>
-                <li><strong>Height:</strong> 2'4" (0.71 m)</li>
-                <li><strong>Weight:</strong> 15.2 lbs (6.9 kg)</li>
-                <li><strong>Abilities:</strong> Overgrow, Chlorophyll</li>
+                <li><strong>Type:</strong> {{ pkm.pokemon.type.join(', ') }}</li>
+                <li><strong>Height:</strong> {{ pkm.pokemon.height }}</li>
+                <li><strong>Weight:</strong> {{ pkm.pokemon.weight }}</li>
+                <li><strong>Abilities:</strong> {{ pkm.pokemon.abilities.join(', ') }}</li>
             </ul>
         </div>
         
-        <!-- Librerias de AngularJS -->
-        <!-- AngularJS libraries -->
+        <!-- Libraries Javascript -->
         <script src="js/lib/angular.min.js"></script>
+        <!-- Application's Javasctipt -->
+        <script src="js/app.js"></script>
     </body>
 </html>
