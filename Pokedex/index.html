@@ -42,7 +42,7 @@
                     <!-- Image Pokemon -->
                     <div class="col-md-6">
                         <figure>
-                            <img src="img/pokemons/{{ pkm.pokemon.name | lowercase }}.jpg" />
+                            <img ng-src="{{ pkm.pokemon.name | imageify : 'jpg' }}" />
                         </figure>
                     </div>
                     <!-- /Image Pokemon -->
@@ -139,7 +139,7 @@
                             <div ng-show="tab.isSelectTab(3)">
                                 <div class="text-center" ng-repeat="pokemon in pkm.pokemon.evolution">
                                     <a href="#">
-                                        <img src="img/pokemons/{{ pokemon | lowercase }}.jpg" width="160">
+                                        <img ng-src="{{ pokemon | imageify }}" width="160">
                                         <p>
                                             <strong>{{ pokemon }}</strong>
                                         </p>
