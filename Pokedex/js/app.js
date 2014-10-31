@@ -29,4 +29,18 @@
             evolution: [ 'Bulbasaur', 'Ivysaur', 'Venusaur' ]
         };
     }]);
+    
+    app.controller('TabsController', [function () {
+        var tabs = this;
+        
+        tabs.tab = 1;
+        
+        tabs.onSelectTab = function (tab) {
+            tabs.tab = tab;
+        }
+        
+        tabs.isSelectTab = function (tab) {
+            return tabs.tab === tab;
+        }
+    }]);
 }());
