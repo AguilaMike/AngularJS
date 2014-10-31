@@ -53,11 +53,14 @@
                             <li><a href="#">Evolution</a></li>
                         </ul>
                         <div class="tab-content">
+                            <!-- Pokedex -->
                             <div>
                                 <ul class="list-group">
                                     <li class="list-group-item">
                                         <strong>Type:</strong>
-                                        <span class="pull-right">{{ pkm.pokemon.type.join(', ') }}</span>
+                                        <span class="pull-right">
+                                            <span ng-repeat="type in pkm.pokemon.type" class="label type type-{{ type | lowercase }}">{{ type }}</span>
+                                        </span>
                                     </li>
                                     <li class="list-group-item">
                                         <strong>Height:</strong>
@@ -69,10 +72,76 @@
                                     </li>
                                     <li class="list-group-item">
                                         <strong>Abilities:</strong>
-                                        <span class="pull-right">{{ pkm.pokemon.abilities.join(', ') }}</span>
+                                        <div>
+                                            <ul>
+                                                <li ng-repeat="ability in pkm.pokemon.abilities">{{ ability }}</li>
+                                            </ul>
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
+                            <!-- /Pokedex -->
+                            <!-- Stats -->
+                            <div>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <strong>HP</strong>
+                                        <span class="badge">
+                                            {{ pkm.pokemon.stats.hp }}
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <strong>Attack</strong>
+                                        <span class="badge">
+                                            {{ pkm.pokemon.stats.attack }}
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <strong>Defense</strong>
+                                        <span class="badge">
+                                            {{ pkm.pokemon.stats.defense }}
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <strong>Special Attack</strong>
+                                        <span class="badge">
+                                            {{ pkm.pokemon.stats['sp.atk'] }}
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <strong>Special Defense</strong>
+                                        <span class="badge">
+                                            {{ pkm.pokemon.stats['sp.def'] }}
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <strong>Speed</strong>
+                                        <span class="badge">
+                                            {{ pkm.pokemon.stats.speed }}
+                                        </span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <strong>Total</strong>
+                                        <span class="badge">
+                                            {{ pkm.pokemon.stats.total }}
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /Stats -->
+                            <!-- Evolution -->
+                            <div>
+                                <div class="text-center" ng-repeat="pokemon in pkm.pokemon.evolution">
+                                    <a href="#">
+                                        <img src="img/pokemons/{{ pokemon | lowercase }}.jpg" width="160">
+                                        <p>
+                                            <strong>{{ pokemon }}</strong>
+                                        </p>
+                                    </a>
+                                    <span ng-hide="$last" class="glyphicon glyphicon-arrow-down"></span>
+                                </div>
+                            </div>
+                            <!-- /Evolution -->
                         </div>
                     </div>
                 </div>
