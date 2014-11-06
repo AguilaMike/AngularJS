@@ -44,6 +44,17 @@
         }
     }]);
     
+    app.controller('CommentsController', [function() {
+        var comments = this;
+
+        comments.commets = [];
+        comments.visible = true;
+
+        comments.changeVisibility = function() {
+            comments.visible = !comments.visible;
+        };
+    }]);
+
     app.filter('imageify', [function () {
         /*
         *   Filtro para establecer las  imagenes de los pokemons
