@@ -47,10 +47,10 @@
     app.controller('CommentsController', [function() {
         var comments = this;
 
-        comments.commets = [];
+        comments.comments = [];
         comments.visible = true;
 
-        comments.changeVisibility = function() {
+        comments.toggle = function() {
             comments.visible = !comments.visible;
         };
     }]);
