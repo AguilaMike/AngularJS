@@ -47,11 +47,24 @@
     app.controller('CommentsController', [function() {
         var comments = this;
 
+        comments.comment = {};
         comments.comments = [];
         comments.visible = true;
 
         comments.toggle = function() {
             comments.visible = !comments.visible;
+        };
+
+        comments.anonymousChanged = function() {
+            if (comments.comment.anonymous) {
+                comments.comment.email = '';
+            }
+        };
+
+        comments.addComment = function() {
+            comments.comment.date = Date.now();
+            comments.comments.push(comments.comment);
+            comments.comment = {};
         };
     }]);
 
