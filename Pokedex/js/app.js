@@ -78,45 +78,44 @@
     app.directive('pokemonName', [function() {
         return {
             restrict: 'E',
-            templateUrl: './partials/pokemon-name.html',
-            controller: 'PokemonController',
-            controllerAs: 'pkm'
+            templateUrl: './partials/pokemon-name.html'
         };
     }]);
 
     app.directive('pokemonImage', [function() {
         return {
             restrict: 'E',
-            templateUrl: './partials/pokemon-image.html',
-            controller: 'PokemonController',
-            controllerAs: 'pkm'
+            templateUrl: './partials/pokemon-image.html'
         };
     }]);
 
     app.directive('pokemonData', [function() {
         return {
             restrict: 'E',
-            templateUrl: './partials/pokemon-data.html',
-            controller: 'PokemonController',
-            controllerAs: 'pkm'
+            templateUrl: './partials/pokemon-data.html'
         };
     }]);
 
     app.directive('pokemonStats', [function() {
         return {
             restrict: 'E',
-            templateUrl: './partials/pokemon-stats.html',
-            controller: 'PokemonController',
-            controllerAs: 'pkm'
+            templateUrl: './partials/pokemon-stats.html'
         };
     }]);
 
     app.directive('pokemonEvolution', [function() {
         return {
             restrict: 'E',
-            templateUrl: './partials/pokemon-evolution.html',
-            controller: 'PokemonController',
-            controllerAs: 'pkm'
+            templateUrl: './partials/pokemon-evolution.html'
+        };
+    }]);
+
+    app.directive('pokemonComments', [function() {
+        return {
+            restrict: 'E',
+            templateUrl: './partials/pokemon-comments.html',
+            controller: 'CommentsController',
+            controllerAs: 'cmt'
         };
     }]);
 

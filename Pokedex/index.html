@@ -75,42 +75,8 @@
                 </div>
                 <!-- /Body Pokemon -->
                 <!-- Comments -->
-                <div ng-controller="CommentsController as cmt" class="row">
-                    <button ng-show="cmt.visible" ng-click="cmt.toggle()" class="btn btn-primary">Show comments <span class="badge">{{ cmt.comments.length }}</span></button>
-                    <div ng-hide="cmt.visible" class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h1 class="panel-title">Comments <button ng-click="cmt.toggle()" class="close pull-right">&times;</button></h1>
-                        </div>
-                        <div class="panel-body">
-                            <form ng-submit="cmt.addComment(commentsForm.$valid)" name="commentsForm" class="form-horizontal" role="form" novalidate>
-                                <div class="form-group">
-                                    <div class="col-sm-6">
-                                        <textarea ng-model="cmt.comment.body" placeholder="Please tell us what you think about {{ pkm.pokemon.name }}" class="form-control" required></textarea>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <input ng-model="cmt.comment.email" ng-disabled="cmt.comment.anonymous" ng-required="!cmt.comment.anonymous" type="email" placeholder="Please enter your mail address" class="form-control" />
-                                        <label>
-                                            <input ng-model="cmt.comment.anonymous" ng-change="cmt.anonymousChanged()" id="anonymous" type="checkbox" />
-                                            Anonymous
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <button type="submit" class="btn btn-lg">Comment</button>
-                                    </div>
-                                </div>
-                            </form>
-                            <div ng-if="cmt.message != ''" class="alert alert-danger">{{ cmt.message }}</div>
-                            <blockquote ng-repeat="comment in cmt.comments">
-                                <p>{{ comment.body }}</p>
-                                <footer>
-                                    Comment by
-                                    <a ng-if="!comment.anonymous" href="{{ comment.email }}">{{ comment.email }}</a>
-                                    <em ng-if="comment.anonymous">Anonymous</em>
-                                    on <span>{{ comment.date | date : 'medium' }}</span>
-                                </footer>
-                            </blockquote>
-                        </div>
-                    </div>
+                <div class="row">
+                    <pokemon-comments></pokemon-comments>
                 </div>
                 <!-- /Comments -->
             </div>
