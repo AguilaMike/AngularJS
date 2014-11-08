@@ -50,6 +50,7 @@
         comments.comment = {};
         comments.comments = [];
         comments.visible = true;
+        comments.message = '';
 
         comments.toggle = function() {
             comments.visible = !comments.visible;
@@ -61,10 +62,16 @@
             }
         };
 
-        comments.addComment = function() {
-            comments.comment.date = Date.now();
-            comments.comments.push(comments.comment);
-            comments.comment = {};
+        comments.addComment = function(valid) {
+            if (valid) {
+                comments.comment.date = Date.now();
+                comments.comments.push(comments.comment);
+                comments.comment = {};
+                comments.message = '';
+            }
+            else {
+                comments.message = 'Comment Invalid';
+            }
         };
     }]);
 
