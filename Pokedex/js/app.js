@@ -75,6 +75,51 @@
         };
     }]);
 
+    app.directive('pokemonName', [function() {
+        return {
+            restrict: 'E',
+            templateUrl: './partials/pokemon-name.html',
+            controller: 'PokemonController',
+            controllerAs: 'pkm'
+        };
+    }]);
+
+    app.directive('pokemonImage', [function() {
+        return {
+            restrict: 'E',
+            templateUrl: './partials/pokemon-image.html',
+            controller: 'PokemonController',
+            controllerAs: 'pkm'
+        };
+    }]);
+
+    app.directive('pokemonData', [function() {
+        return {
+            restrict: 'E',
+            templateUrl: './partials/pokemon-data.html',
+            controller: 'PokemonController',
+            controllerAs: 'pkm'
+        };
+    }]);
+
+    app.directive('pokemonStats', [function() {
+        return {
+            restrict: 'E',
+            templateUrl: './partials/pokemon-stats.html',
+            controller: 'PokemonController',
+            controllerAs: 'pkm'
+        };
+    }]);
+
+    app.directive('pokemonEvolution', [function() {
+        return {
+            restrict: 'E',
+            templateUrl: './partials/pokemon-evolution.html',
+            controller: 'PokemonController',
+            controllerAs: 'pkm'
+        };
+    }]);
+
     app.filter('imageify', [function () {
         /*
         *   Filtro para establecer las  imagenes de los pokemons

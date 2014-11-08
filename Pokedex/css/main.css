@@ -19,6 +19,10 @@ body {
   margin-bottom: 10px;
 }
 
+.form-group {
+  padding: 10px;
+}
+
 .type {
   margin-left: 1px;
 }
@@ -111,4 +115,12 @@ body {
 .type-fairy {
   background-color: #ee99ac;
   border: solid 1px #9b6470;
+}
+
+.ng-invalid.ng-dirty {
+  border-color: #D9230F;
+}
+
+.ng-valid.ng-dirty {
+  border-color: #468847;
 }

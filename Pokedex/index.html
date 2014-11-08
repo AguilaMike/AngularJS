@@ -30,20 +30,14 @@
             <div ng-controller="PokemonController as pkm">
                 <!-- Titule Pokemon -->
                 <div class="page-header">
-                    <h1>
-                        {{ pkm.pokemon.name }} 
-                        <small>{{ pkm.pokemon.species }}</small>
-                        <span class="label label-primary pull-right"># {{ pkm.pokemon.id }}</span>
-                    </h1>
+                    <pokemon-name></pokemon-name>
                 </div>
                 <!-- /Titule Pokemon -->
                 <!-- Body Pokemon -->
                 <div class="row">
                     <!-- Image Pokemon -->
                     <div class="col-md-6">
-                        <figure>
-                            <img ng-src="{{ pkm.pokemon.name | imageify : 'jpg' }}" />
-                        </figure>
+                        <pokemon-image></pokemon-image>
                     </div>
                     <!-- /Image Pokemon -->
                     <!-- Tabs -->
@@ -62,91 +56,17 @@
                         <div class="tab-content">
                             <!-- Pokedex -->
                             <div ng-show="tab.isSelectTab(1)">
-                                <ul class="list-group">
-                                    <li class="list-group-item">
-                                        <strong>Type:</strong>
-                                        <span class="pull-right">
-                                            <span ng-repeat="type in pkm.pokemon.type" class="label type type-{{ type | lowercase }}">{{ type }}</span>
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <strong>Height:</strong>
-                                        <span class="pull-right">{{ pkm.pokemon.height }}</span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <strong>Weight:</strong>
-                                        <span class="pull-right">{{ pkm.pokemon.weight }}</span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <strong>Abilities:</strong>
-                                        <div>
-                                            <ul>
-                                                <li ng-repeat="ability in pkm.pokemon.abilities">{{ ability }}</li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </ul>
+                                <pokemon-data></pokemon-data>
                             </div>
                             <!-- /Pokedex -->
                             <!-- Stats -->
                             <div ng-show="tab.isSelectTab(2)">
-                                <ul class="list-group">
-                                    <li class="list-group-item">
-                                        <strong>HP</strong>
-                                        <span class="badge">
-                                            {{ pkm.pokemon.stats.hp }}
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <strong>Attack</strong>
-                                        <span class="badge">
-                                            {{ pkm.pokemon.stats.attack }}
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <strong>Defense</strong>
-                                        <span class="badge">
-                                            {{ pkm.pokemon.stats.defense }}
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <strong>Special Attack</strong>
-                                        <span class="badge">
-                                            {{ pkm.pokemon.stats['sp.atk'] }}
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <strong>Special Defense</strong>
-                                        <span class="badge">
-                                            {{ pkm.pokemon.stats['sp.def'] }}
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <strong>Speed</strong>
-                                        <span class="badge">
-                                            {{ pkm.pokemon.stats.speed }}
-                                        </span>
-                                    </li>
-                                    <li class="list-group-item">
-                                        <strong>Total</strong>
-                                        <span class="badge">
-                                            {{ pkm.pokemon.stats.total }}
-                                        </span>
-                                    </li>
-                                </ul>
+                                <pokemon-stats></pokemon-stats>
                             </div>
                             <!-- /Stats -->
                             <!-- Evolution -->
                             <div ng-show="tab.isSelectTab(3)">
-                                <div class="text-center" ng-repeat="pokemon in pkm.pokemon.evolution">
-                                    <a href="#">
-                                        <img ng-src="{{ pokemon | imageify }}" width="160">
-                                        <p>
-                                            <strong>{{ pokemon }}</strong>
-                                        </p>
-                                    </a>
-                                    <span ng-hide="$last" class="glyphicon glyphicon-arrow-down"></span>
-                                </div>
+                                <pokemon-evolution></pokemon-evolution>
                             </div>
                             <!-- /Evolution -->
                         </div>
