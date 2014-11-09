@@ -11,8 +11,8 @@
             })
     }]);
 
-    app.controller('PokemonController', [function() {
-        var pkm = this;
+    app.controller('PokemonController', ['$scope', function($scope) {
+        var pkm = $scope;
 
         pkm.pokemon = {
             id: '001',

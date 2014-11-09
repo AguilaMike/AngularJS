@@ -12,5 +12,8 @@
             controller: 'PokemonController',
             controllerAs: 'pkm'
         })
+        .otherwise({
+            redirectTo: '/'
+        })
     }]);
 }());
