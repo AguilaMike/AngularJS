@@ -1,14 +1,14 @@
 (function() {
-    var app = angular.module('pokedex.controllers', []);
+    var app = angular.module('pokedex.controllers', ['pokedex.services']);
 
-    app.controller('PokedexController', ['$scope', '$http', function($scope, $http) {
+    app.controller('PokedexController', ['$scope', 'pokemonService', function($scope, pokemonService) {
         var pkms = $scope;
         pkms.pokemons = [];
 
-        $http.get('./pokemons.json')
-            .success(function(data) {
+        pokemonService.all()
+            .then(function(data) {
                 pkms.pokemons = data;
-            })
+            });
     }]);
 
     app.controller('PokemonController', ['$scope', function($scope) {
