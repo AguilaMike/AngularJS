@@ -25,70 +25,18 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <!-- Pokemon -->
-            <div ng-controller="PokemonController as pkm">
-                <!-- Titule Pokemon -->
-                <div class="page-header">
-                    <pokemon-name></pokemon-name>
-                </div>
-                <!-- /Titule Pokemon -->
-                <!-- Body Pokemon -->
-                <div class="row">
-                    <!-- Image Pokemon -->
-                    <div class="col-md-6">
-                        <pokemon-image></pokemon-image>
-                    </div>
-                    <!-- /Image Pokemon -->
-                    <!-- Tabs -->
-                    <div class="col-md-6" ng-controller="TabsController as tab">
-                        <ul class="nav nav-tabs nav-justified">
-                            <li ng-class="{ active: tab.isSelectTab(1) }">
-                                <a ng-click="tab.onSelectTab(1)">Pokédex</a>
-                            </li>
-                            <li ng-class="{ active: tab.isSelectTab(2) }">
-                                <a ng-click="tab.onSelectTab(2)">Stats</a>
-                            </li>
-                            <li ng-class="{ active: tab.isSelectTab(3) }">
-                                <a ng-click="tab.onSelectTab(3)" >Evolution</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <!-- Pokedex -->
-                            <div ng-show="tab.isSelectTab(1)">
-                                <pokemon-data></pokemon-data>
-                            </div>
-                            <!-- /Pokedex -->
-                            <!-- Stats -->
-                            <div ng-show="tab.isSelectTab(2)">
-                                <pokemon-stats></pokemon-stats>
-                            </div>
-                            <!-- /Stats -->
-                            <!-- Evolution -->
-                            <div ng-show="tab.isSelectTab(3)">
-                                <pokemon-evolution></pokemon-evolution>
-                            </div>
-                            <!-- /Evolution -->
-                        </div>
-                    </div>
-                    <!-- /Tabs -->
-                </div>
-                <!-- /Body Pokemon -->
-                <!-- Comments -->
-                <div class="row">
-                    <pokemon-comments></pokemon-comments>
-                </div>
-                <!-- /Comments -->
-            </div>
-            <!-- /Pokemon -->
+        <div class="container-fluid">
+            <div ng-view></div>
         </div>
         
         <!-- Libraries Javascript -->
         <script src="js/lib/angular.min.js"></script>
+        <script src="js/lib/angular-route.min.js"></script>
         <!-- Application's Javasctipt -->
         <script src="js/app.js"></script>
         <script src="js/controller.js"></script>
         <script src="js/directives.js"></script>
         <script src="js/filter.js"></script>
+        <script src="js/routes.js"></script>
     </body>
 </html>
