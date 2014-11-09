@@ -2,4 +2,8 @@
    <div class="page-header">
        <h1>Pokedex</h1>
    </div>
+   <div ng-repeat="pkm in pokemons">
+    <h1>{{pkm.name}} <small>{{pkm.species}}</small></h1>
+    <img ng-src="{{pkm.name | imageify}}">
+  </div>
 </div>
