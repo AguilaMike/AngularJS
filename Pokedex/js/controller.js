@@ -11,28 +11,15 @@
             });
     }]);
 
-    app.controller('PokemonController', ['$scope', function($scope) {
+    app.controller('PokemonController', ['$scope', '$routeParams', 'pokemonService', function($scope, $routeParams, pokemonService) {
         var pkm = $scope;
 
-        pkm.pokemon = {
-            id: '001',
-            name: 'Bulbasaur',
-            species: 'Seed Pokémon',
-            type: [ 'Grass', 'Poison' ],
-            height: '2' + "'" + '4" (0.71 m)',
-            weight: '15.2 lbs (6.9 kg)',
-            abilities: [ 'Overgrow', 'Chlorophyll' ],
-            stats: {
-                hp: 45,
-                attack: 49,
-                defense: 49,
-                "sp.atk": 65,
-                "sp.def": 65,
-                speed: 45,
-                total: 318
-            },
-            evolution: [ 'Bulbasaur', 'Ivysaur', 'Venusaur' ]
-        };
+        pkm.pokemon = {};
+
+        pokemonService.byName($routeParams.name)
+            .then(function(pokemon) {
+                pkm.pokemon = pokemon;
+            });
     }]);
 
     app.controller('TabsController', [function () {
