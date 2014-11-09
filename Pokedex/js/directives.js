@@ -22,6 +22,13 @@
         };
     }]);
 
+    app.directive('pokemonType', [function() {
+        return {
+            restrict: 'E',
+            templateUrl: './partials/pokemon-type.html'
+        };
+    }]);
+
     app.directive('pokemonStats', [function() {
         return {
             restrict: 'E',
