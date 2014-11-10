@@ -1,14 +1,31 @@
-(function() {
+(function(_) {
     var app = angular.module('pokedex.controllers', ['pokedex.services']);
 
-    app.controller('PokedexController', ['$scope', 'pokemonService', function($scope, pokemonService) {
+    app.controller('PokedexController', ['$scope', '$routeParams', 'pokemonService', function($scope, $routeParams, pokemonService) {
+        var type = $routeParams.type;
         var pkms = $scope;
         pkms.pokemons = [];
 
-        pokemonService.all()
-            .then(function(data) {
-                pkms.pokemons = data;
-            });
+        if (type) {
+            pkms.type = type;
+            pokemonService.byType(type)
+                .then(function(data) {
+                    pkms.pokemons = data;
+                    pkms.groupped = partition(data, 4);
+                });
+        } else {
+            pokemonService.all()
+                .then(function(data) {
+                    pkms.pokemons = data;
+                pkms.groupped = partition(data, 4);
+                });
+        }
+
+        function partition(data, n) {
+            return _.chain(data).groupBy(function (element, index) {
+                return Math.floor(index / n);
+            }).toArray().value();
+        }
     }]);
 
     app.controller('PokemonController', ['$scope', '$routeParams', 'pokemonService', function($scope, $routeParams, pokemonService) {
@@ -66,4 +83,4 @@
             }
         };
     }]);
-}());
+}(_));

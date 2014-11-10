@@ -1,3 +1,7 @@
 <div class="text-center">
-    <span ng-repeat="type in pokemon.type" class="label type type-{{ type | lowercase }}">{{ type }}</span>
+    <a href="./#/{{ type }}" ng-repeat="type in pokemon.type">
+        <span class="label type type-{{ type | lowercase }}">
+            {{ type }}
+        </span>
+    </a>
 </div>
