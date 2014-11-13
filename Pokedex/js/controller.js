@@ -53,11 +53,11 @@
         }
     }]);
 
-    app.controller('CommentsController', [function() {
-        var comments = this;
+    app.controller('CommentsController', ['$scope', 'pokemonService', function($scope, pokemonService) {
+        var comments = $scope;
 
         comments.comment = {};
-        comments.comments = [];
+        comments.comments = pokemonService.getComments($scope.name);
         comments.visible = true;
         comments.message = '';
 
@@ -74,7 +74,8 @@
         comments.addComment = function(valid) {
             if (valid) {
                 comments.comment.date = Date.now();
-                comments.comments.push(comments.comment);
+                pokemonService.saveComment($scope.name, comments.comment);
+                comments.comments = pokemonService.getComments($scope.name);
                 comments.comment = {};
                 comments.message = '';
             }

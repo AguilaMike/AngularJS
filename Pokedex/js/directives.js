@@ -1,5 +1,5 @@
 (function() {
-    var app = angular.module('pokedex.directives', ['pokedex.controllers']);
+    var app = angular.module('pokedex.directives', ['pokedex.controllers', 'pokedex.services']);
 
     app.directive('pokemonName', [function() {
         return {
@@ -43,10 +43,19 @@
         };
     }]);
 
-    app.directive('pokemonComments', [function() {
+    app.directive('pokemonComments', ['pokemonService', function(pokemonService) {
         return {
             restrict: 'E',
             templateUrl: './partials/pokemon-comments.html',
+            scope: { name: '@name' },
+            link: function(scope, element, attributes) {
+                attributes.$observe('name', function (value) {
+                    if (value) {
+                        scope.name = value;
+                        scope.comments = pokemonService.getComments(value);
+                    }
+                });
+            },
             controller: 'CommentsController',
             controllerAs: 'cmt'
         };
