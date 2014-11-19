@@ -1,55 +1,67 @@
-<!-- Pokemon -->
 <div>
-    <!-- Titule Pokemon -->
-    <div class="page-header">
-        <pokemon-name></pokemon-name>
-    </div>
-    <!-- /Titule Pokemon -->
-    <!-- Body Pokemon -->
-    <div class="row">
-        <!-- Image Pokemon -->
-        <div class="col-md-6">
-            <pokemon-image></pokemon-image>
+    <!-- Pokemon -->
+    <div ng-if="pokemon">
+        <!-- Titule Pokemon -->
+        <div class="page-header">
+            <pokemon-name></pokemon-name>
         </div>
-        <!-- /Image Pokemon -->
-        <!-- Tabs -->
-        <div class="col-md-6" ng-controller="TabsController as tab">
-            <ul class="nav nav-tabs nav-justified">
-                <li ng-class="{ active: tab.isSelectTab(1) }">
-                    <a ng-click="tab.onSelectTab(1)">Pokédex</a>
-                </li>
-                <li ng-class="{ active: tab.isSelectTab(2) }">
-                    <a ng-click="tab.onSelectTab(2)">Stats</a>
-                </li>
-                <li ng-class="{ active: tab.isSelectTab(3) }">
-                    <a ng-click="tab.onSelectTab(3)" >Evolution</a>
-                </li>
-            </ul>
-            <div class="tab-content">
-                <!-- Pokedex -->
-                <div ng-show="tab.isSelectTab(1)">
-                    <pokemon-data></pokemon-data>
-                </div>
-                <!-- /Pokedex -->
-                <!-- Stats -->
-                <div ng-show="tab.isSelectTab(2)">
-                    <pokemon-stats></pokemon-stats>
-                </div>
-                <!-- /Stats -->
-                <!-- Evolution -->
-                <div ng-show="tab.isSelectTab(3)">
-                    <pokemon-evolution></pokemon-evolution>
-                </div>
-                <!-- /Evolution -->
+        <!-- /Titule Pokemon -->
+        <!-- Body Pokemon -->
+        <div class="row">
+            <!-- Image Pokemon -->
+            <div class="col-md-6">
+                <pokemon-image></pokemon-image>
             </div>
+            <!-- /Image Pokemon -->
+            <!-- Tabs -->
+            <div class="col-md-6" ng-controller="TabsController as tab">
+                <ul class="nav nav-tabs nav-justified">
+                    <li ng-class="{ active: tab.isSelectTab(1) }">
+                        <a ng-click="tab.onSelectTab(1)">Pokédex</a>
+                    </li>
+                    <li ng-class="{ active: tab.isSelectTab(2) }">
+                        <a ng-click="tab.onSelectTab(2)">Stats</a>
+                    </li>
+                    <li ng-class="{ active: tab.isSelectTab(3) }">
+                        <a ng-click="tab.onSelectTab(3)" >Evolution</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <!-- Pokedex -->
+                    <div ng-show="tab.isSelectTab(1)">
+                        <pokemon-data></pokemon-data>
+                    </div>
+                    <!-- /Pokedex -->
+                    <!-- Stats -->
+                    <div ng-show="tab.isSelectTab(2)">
+                        <pokemon-stats></pokemon-stats>
+                    </div>
+                    <!-- /Stats -->
+                    <!-- Evolution -->
+                    <div ng-show="tab.isSelectTab(3)">
+                        <pokemon-evolution></pokemon-evolution>
+                    </div>
+                    <!-- /Evolution -->
+                </div>
+            </div>
+            <!-- /Tabs -->
         </div>
-        <!-- /Tabs -->
+        <!-- /Body Pokemon -->
+        <!-- Comments -->
+        <div class="row">
+            <pokemon-comments name="{{ pokemon.name }}"></pokemon-comments>
+        </div>
+        <!-- /Comments -->
     </div>
-    <!-- /Body Pokemon -->
-    <!-- Comments -->
-    <div class="row">
-        <pokemon-comments name="{{ pokemon.name }}"></pokemon-comments>
+    <!-- /Pokemon -->
+    <!-- Not Found -->
+    <div ng-if="!pokemon">
+        <div class="page-header">
+            <h1>Error</h1>
+        </div>
+        <div class="alert alert-danger">
+            Pokémon not found
+        </div>
     </div>
-    <!-- /Comments -->
+    <!-- /Not Found -->
 </div>
-<!-- /Pokemon -->

@@ -31,8 +31,6 @@
     app.controller('PokemonController', ['$scope', '$routeParams', 'pokemonService', function($scope, $routeParams, pokemonService) {
         var pkm = $scope;
 
-        pkm.pokemon = {};
-
         pokemonService.byName($routeParams.name)
             .then(function(pokemon) {
                 pkm.pokemon = pokemon;
