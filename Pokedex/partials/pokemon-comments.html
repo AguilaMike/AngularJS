@@ -23,7 +23,7 @@
                 </div>
             </form>
             <div ng-if="message != ''" class="alert alert-danger">{{ message }}</div>
-            <blockquote ng-repeat="comment in comments">
+            <blockquote ng-repeat="comment in comments | orderBy:'-date'">
                 <p>{{ comment.body }}</p>
                 <footer>
                     Comment by
