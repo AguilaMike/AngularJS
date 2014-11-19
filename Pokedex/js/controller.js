@@ -17,7 +17,15 @@
             pokemonService.all()
                 .then(function(data) {
                     pkms.pokemons = data;
-                pkms.groupped = partition(data, 4);
+                    pkms.groupped = partition(data, 4);
+                });
+        }
+
+        pkms.search = function() {
+            pokemonService.bySearch(pkms.Search, type)
+                .then(function(data) {
+                    pkms.pokemons = data;
+                    pkms.groupped = partition(data, 4);
                 });
         }
 

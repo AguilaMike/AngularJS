@@ -36,6 +36,39 @@
             return deferred.promise;
         }
 
+        function bySearch(search, type) {
+            var deferred = $q.defer(),
+                search = normalize(search);
+
+            if (type) {
+                byType(type).then(function(data) {
+                    var results = data;
+
+                    if (search) {
+                        results = data.filter(function(pokemon) {
+                            return (normalize(pokemon.name).indexOf(search) !== -1);
+                        });
+                    }
+
+                    deferred.resolve(results);
+                });
+            } else {
+                all().then(function(data) {
+                    var results = data;
+
+                    if (search) {
+                        results = data.filter(function(pokemon) {
+                            return (normalize(pokemon.name).indexOf(search) !== -1);
+                        });
+                    }
+
+                    deferred.resolve(results);
+                });
+            }
+
+            return deferred.promise;
+        }
+
         function byType(type) {
             var deferred = $q.defer(),
                 type = normalize(type);
@@ -74,6 +107,7 @@
         return {
             all: all,
             byName: byName,
+            bySearch: bySearch,
             byType: byType,
             saveComment: saveComment,
             getComments: getComments
